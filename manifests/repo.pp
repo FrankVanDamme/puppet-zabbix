@@ -21,12 +21,12 @@ class zabbix::repo (
     case $facts['os']['family'] {
       'RedHat': {
         $majorrelease = $facts['os']['release']['major']
-        if (versioncmp(fact('os.release.major'), '7') >= 0 and $zabbix_version == '7.0') {
-          $gpgkey_zabbix = 'https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-B5333005'
-          $gpgkey_nonsupported = 'https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-B5333005'
-        } elsif versioncmp(fact('os.release.major'), '9') >= 0 {
+        if versioncmp(fact('os.release.major'), '9') >= 0 {
           $gpgkey_zabbix = 'https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-08EFA7DD'
           $gpgkey_nonsupported = 'https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-08EFA7DD'
+        } elsif (versioncmp(fact('os.release.major'), '7') >= 0 and $zabbix_version == '7.0') {
+          $gpgkey_zabbix = 'https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-B5333005'
+          $gpgkey_nonsupported = 'https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-B5333005'
         } else {
           $gpgkey_zabbix = 'https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-A14FE591'
           $gpgkey_nonsupported = 'https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-79EA5ED4'
