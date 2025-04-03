@@ -43,6 +43,7 @@
 #   * verify_ca - connect using TLS and verify certificate
 #   * verify_full - connect using TLS, verify certificate and verify that database identity specified by DBHost matches its certificate
 # @param database_tlscafile Full pathname of a file containing the top-level CA(s) certificates for database certificate verification.
+# @param database_allowunsupver Allow unsupported database versions
 # @param database_tlscertfile Full pathname of file containing Zabbix server certificate for authenticating to database.
 # @param database_tlskeyfile Full pathname of file containing the private key for authenticating to database.
 # @param database_tlscipher The list of encryption ciphers that Zabbix server permits for TLS protocols up through TLSv1.2.
@@ -197,6 +198,7 @@ class zabbix::server (
   $database_user                                                              = $zabbix::params::server_database_user,
   $database_password                                                          = $zabbix::params::server_database_password,
   $database_socket                                                            = $zabbix::params::server_database_socket,
+  $database_allowunsupver                                                     = $zabbix::params::server_database_allowunsupver,
   Optional[Stdlib::Port::Unprivileged] $database_port                         = $zabbix::params::server_database_port,
   Optional[Enum['required', 'verify_ca', 'verify_full']] $database_tlsconnect = $zabbix::params::server_database_tlsconnect,
   Optional[Stdlib::Absolutepath] $database_tlscafile                          = $zabbix::params::server_database_tlscafile,

@@ -123,6 +123,15 @@ DBPassword=<%= @database_password %>
 # Range: 1024-65535
 <% if @database_port %>DBPort=<%= @database_port %><% end %>
 
+### Option: AllowUnsupportedDBVersions
+#      Allow server to work with unsupported database versions.
+#       0 - do not allow
+#       1 - allow
+#
+# Mandatory: no
+# Default:
+AllowUnsupportedDBVersions=<%= @database_allowunsupver %>
+
 <% if @zabbix_version.to_f >= 7.0 %>
 ### Option: HistoryStorageURL
 #	History storage HTTP[S] URL.
